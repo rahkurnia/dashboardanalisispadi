@@ -53,6 +53,64 @@ tension:0.3
 
 }
 
+// 
+
+async function hitungStatistik(){
+
+let response = await fetch("data/2025.csv")
+let text = await response.text()
+
+let rows = text.split("\n").slice(1)
+
+let total = 0
+let count = 0
+let maxKab = ""
+let max = 0
+let minKab = ""
+let min = Infinity
+
+rows.forEach(r=>{
+
+let cols = r.split(",")
+
+let kab = cols[0]
+let produksi = Number(cols[1])
+
+if(!isNaN(produksi)){
+
+total += produksi
+count++
+
+if(produksi > max){
+max = produksi
+maxKab = kab
+}
+
+if(produksi < min){
+min = produksi
+minKab = kab
+}
+
+}
+
+})
+
+let avg = total / count
+
+document.getElementById("totalProd").innerText =
+total.toLocaleString()+" ton"
+
+document.getElementById("maxProd").innerText =
+maxKab+" ("+max.toLocaleString()+" ton)"
+
+document.getElementById("minProd").innerText =
+minKab+" ("+min.toLocaleString()+" ton)"
+
+document.getElementById("avgProd").innerText =
+avg.toLocaleString(undefined,{maximumFractionDigits:0})+" ton"
+
+}
+
 // NAMPILIN PETA
 
 async function loadMap(){
@@ -283,6 +341,8 @@ updateKabInfo(data)
 
 }
 
+// TAMPILAN SUB HEADERNYA
+
 function updateKabInfo(data){
 
 let last = data[data.length-1]
@@ -298,7 +358,78 @@ document.getElementById("persenPerubahan").innerText =
 
 }
 
+async function loadKPI(){
+
+let data2025 = await fetch("data/2025.csv")
+let text2025 = await data2025.text()
+
+let rows2025 = text2025.split("\n").slice(1)
+
+let total2025 = 0
+let maxKab = ""
+let maxProduksi = 0
+
+rows2025.forEach(r=>{
+
+let cols = r.split(",")
+
+let kab = cols[0]
+let produksi = Number(cols[1])
+
+if(!isNaN(produksi)){
+
+total2025 += produksi
+
+if(produksi > maxProduksi){
+maxProduksi = produksi
+maxKab = kab
+}
+
+}
+
+})
+
+
+let data2024 = await fetch("data/2024.csv")
+let text2024 = await data2024.text()
+
+let rows2024 = text2024.split("\n").slice(1)
+
+let total2024 = 0
+
+rows2024.forEach(r=>{
+
+let cols = r.split(",")
+
+let produksi = Number(cols[1])
+
+if(!isNaN(produksi)){
+total2024 += produksi
+}
+
+})
+
+
+let perubahan = ((total2025-total2024)/total2024*100).toFixed(2)
+
+
+document.getElementById("totalProduksi").innerText =
+total2025.toLocaleString()+" ton"
+
+document.getElementById("kabTertinggi").innerText =
+maxKab
+
+document.getElementById("kabProduksi").innerText =
+maxProduksi.toLocaleString()+" ton"
+
+document.getElementById("persenPerubahanTotal").innerText =
+perubahan+" %"
+
+}
+
+loadKPI()
 loadData()
 loadMap()
 loadTop10()
 loadKabupatenTrend()
+hitungStatistik()
