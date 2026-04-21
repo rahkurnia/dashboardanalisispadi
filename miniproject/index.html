@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Dashboard Analisis Produksi Padi</title>
+
+<link rel="stylesheet" href="style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">
+
+<div class="header-left">
+<img src="assets/logo.png" class="logo">
+<div>
+<h2>BADAN PUSAT STATISTIK</h2>
+<p>PROVINSI JAWA TIMUR</p>
+</div>
+</div>
+
+<div class="header-center">
+<h1>DASHBOARD ANALISIS PRODUKSI PADI</h1>
+<p>Jawa Timur</p>
+</div>
+
+<div class="header-right">
+Terakhir diperbarui<br>
+<b>5 November 2025</b>
+</div>
+
+</div>
+
+
+<!-- KPI CARDS -->
+<div class="cards">
+
+<div class="card">
+<h4>TOTAL PRODUKSI 2025</h4>
+<h2>19,500,000 ton</h2>
+<p>2020 - 2025</p>
+</div>
+
+<div class="card">
+<h4>KABUPATEN PRODUKSI TERTINGGI</h4>
+<h2>Bojonegoro</h2>
+<p>900,000 ton</p>
+</div>
+
+<div class="card">
+<h4>PERUBAHAN DARI 2024</h4>
+<h2>+3.2%</h2>
+<p>Laju meningkat</p>
+</div>
+
+</div>
+
+
+<!-- ROW 1 -->
+<div class="grid">
+
+<div class="panel">
+<h3>TREN PRODUKSI PADI JAWA TIMUR</h3>
+<canvas id="trendChart"></canvas>
+</div>
+
+<div class="panel">
+<h3>PETA PRODUKSI PADI JAWA TIMUR 2025</h3>
+<div id="map"></div>
+</div>
+
+</div>
+
+
+<!-- ROW 2 -->
+<div class="grid">
+
+<div class="panel">
+<h3>TOP 10 KABUPATEN PRODUKSI PADI</h3>
+<canvas id="barChart"></canvas>
+</div>
+
+<div class="panel">
+<h3>TREN PRODUKSI PER KABUPATEN</h3>
+
+<select id="kabupatenSelect"></select>
+
+<div class="kab-info">
+<p id="produksiTerakhir"></p>
+<p id="persenPerubahan"></p>
+</div>
+
+<canvas id="kabChart"></canvas>
+</div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.2/papaparse.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
