@@ -231,3 +231,23 @@ height:300px !important;
   }
 
 }
+
+canvas{
+width:100% !important;
+}
+
+@media (max-width:768px){
+
+.panel{
+padding:15px;
+}
+
+.grid{
+padding:0 15px 20px 15px;
+}
+
+.cards{
+padding:20px 15px;
+}
+
+}
