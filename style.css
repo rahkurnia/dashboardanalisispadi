@@ -11,6 +11,7 @@ background:#f5f7fb;
 display:flex;
 justify-content:space-between;
 align-items:center;
+flex-wrap: wrap;
 background:#1f4e79;
 color:white;
 padding:15px 40px;
@@ -204,4 +205,29 @@ height:300px !important;
   canvas {
     height: 250px !important;
   }
+}
+
+/* TAMBAHAN RESPONSIVE */
+@media (max-width: 768px){
+
+  .header{
+    padding:15px 20px;
+  }
+
+  .cards{
+    flex-direction:column;
+    padding:20px;
+  }
+
+  .grid{
+    grid-template-columns:1fr;
+    padding:20px;
+  }
+
+  .footer-container{
+    flex-direction:column;
+    gap:20px;
+    padding:25px;
+  }
+
 }
