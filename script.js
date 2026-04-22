@@ -244,7 +244,8 @@ options:{
 responsive:true,
 plugins:{
 legend:{
-display:false
+display:false,
+maintainAspectRatio: false
 }
 }
 }
