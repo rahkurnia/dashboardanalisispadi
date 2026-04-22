@@ -193,3 +193,15 @@ line-height:1.6;
 #barChart{
 height:300px !important;
 }
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  canvas {
+    height: 250px !important;
+  }
+}
